@@ -19,6 +19,7 @@ namespace ProjetFinal.Controllers
                 new MonsterViewModel
                 {
                     Id=1,
+                    Title="Strahd Von Zavorich",
                     Name="Vampire",
                     Size=Size.Medium,
                     Kind=Kind.Undead
@@ -26,6 +27,7 @@ namespace ProjetFinal.Controllers
                 new MonsterViewModel
                 {
                     Id=2,
+                    Title="Godzilla sans laser",
                     Name="Tarrasque",
                     Size=Size.Gargantuan,
                     Kind=Kind.Monstrosities
@@ -40,7 +42,8 @@ namespace ProjetFinal.Controllers
             var monstre = new MonsterViewModel
             {
                 Id = 54,
-                Name = "Jackal",
+                Title= "Bruce / Lou",
+                Name = "Hyena",
                 Size = Size.Small,
                 Kind = Kind.Beasts
             };
@@ -74,6 +77,7 @@ namespace ProjetFinal.Controllers
             var test = new MonsterViewModel
             {
                 Id = 42,
+                Title ="America's dream",
                 Name = "Black pudding",
                 Size = Size.Large,
                 Kind = Kind.Oozes
@@ -99,7 +103,15 @@ namespace ProjetFinal.Controllers
         // GET: MonsterController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var deleteTest = new MonsterViewModel
+            {
+                Id = 59687,
+                Title = "Baldur's gate 3",
+                Name = "Mindflayer",
+                Size = Size.Medium,
+                Kind = Kind.Aberrations
+            };
+            return View(deleteTest);
         }
 
         // POST: MonsterController/Delete/5
