@@ -9,7 +9,7 @@ using Common.Enumerations;
 
 namespace ProjetFinal.Controllers
 {
-    public class MonsterController : Controller
+    public class ManualController : Controller
     {
         // GET: MonsterController
         public ActionResult Index()
@@ -71,12 +71,27 @@ namespace ProjetFinal.Controllers
             }
         }
 
+        // GET: MonsterController/Clone/5
+        public ActionResult Clone(int id)
+        {
+            var testClone = new MonsterViewModel
+            {
+                Id = 0,
+                Title = "Belgium's pride",
+                Name = "French fries",
+                Size = Size.Small,
+                Kind = Kind.Plants
+            };
+            testClone.Id = 67;
+            return RedirectToAction(nameof(Edit),new { id = testClone.Id });
+        }       
+
         // GET: MonsterController/Edit/5
         public ActionResult Edit(int id)
         {
             var test = new MonsterViewModel
             {
-                Id = 42,
+                Id = id,
                 Title ="America's dream",
                 Name = "Black pudding",
                 Size = Size.Large,

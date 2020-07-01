@@ -1,4 +1,4 @@
-﻿@model ProjetFinal.Models.MonsterViewModel
+﻿@model Common.TransferObjects.MonsterTO
 
 @{
     ViewData["Title"] = "Details";
@@ -38,6 +38,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Add", "Index", new {  id = Model.Id  }) |
+    @Html.ActionLink("Clone", "Clone","Manual", new {  id = Model.Id  }) |
     <a asp-action="Index">Back to List</a>
 </div>

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.TransferObjects;
+using DAL;
+using LogicMetier;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +26,8 @@ namespace ProjetFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<AuthorUseCase,AuthorUseCase>();
+            services.AddScoped<IRepository<MonsterTO>, MonsterTempRepository>();
             services.AddControllersWithViews();
         }
 
