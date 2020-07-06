@@ -31,5 +31,26 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
             Assert.AreEqual(2, data.Count());
             Assert.AreEqual(typeof(List<MonsterTO>), data.GetType());
         }
+
+        [TestMethod]
+        public void ReturnDetail_Correct()
+        {
+            //Arrange
+            var id = 5;
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(new MonsterTO { Id = id });
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+
+            // Act
+            var actionResult = controller.Details(id) as ViewResult;
+            var data = actionResult.Model as MonsterTO;
+
+            //Assert
+            Assert.AreEqual(typeof(MonsterTO), actionResult.Model.GetType());
+            Assert.AreEqual(id, data.Id);
+        }
+
+
     }
 }
