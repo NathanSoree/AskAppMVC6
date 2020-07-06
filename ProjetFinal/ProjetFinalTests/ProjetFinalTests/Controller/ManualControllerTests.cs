@@ -15,7 +15,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
     public class ManualControllerTests
     {
         [TestMethod]
-        public void ReturnIndex_Correct()
+        public void Index_Correct()
         {
             //Arrange
             var mocqRepo = new Mock<IRepository<MonsterTO>>();
@@ -33,7 +33,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
         }
 
         [TestMethod]
-        public void ReturnDetail_Correct()
+        public void Detail_Correct()
         {
             //Arrange
             var id = 5;
@@ -42,7 +42,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
             var author = new AuthorUseCase(mocqRepo.Object);
             var controller = new ManualController(author);
 
-            // Act
+            //Act
             var actionResult = controller.Details(id) as ViewResult;
             var data = actionResult.Model as MonsterTO;
 
@@ -51,6 +51,17 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
             Assert.AreEqual(id, data.Id);
         }
 
+        [TestMethod]
+        public void ManualController_NoAuthor_RaiseArgumentNullException()
+        {
+            //Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new AuthorUseCase(null));
+        }
 
+        [TestMethod]
+        public void ManualController_Something()
+        {
+            Assert.AreEqual(2, 2);
+        }
     }
 }

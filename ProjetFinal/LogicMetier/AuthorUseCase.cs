@@ -17,9 +17,6 @@ namespace LogicMetier
         {
             this.monsterRepository = monsterRepository ?? throw new ArgumentNullException(nameof(monsterRepository));
         }
-
-        
-
         public List<MonsterTO> GetMonsterMarket()
         {
             var testMarket = monsterRepository.GetAll().Select(x => x.ToDomain());

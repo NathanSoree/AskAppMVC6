@@ -9,7 +9,7 @@ using ProjetFinal.Controllers;
 using System.Collections.Generic;
 using System;
 
-namespace ProjetFinalTests
+namespace ProjetFinalTests.ProjetFinalTests.Controller
 {
     [TestClass]
     public class MarketControllerTests
