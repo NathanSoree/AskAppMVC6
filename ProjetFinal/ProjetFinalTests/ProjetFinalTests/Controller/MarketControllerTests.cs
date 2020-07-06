@@ -29,7 +29,7 @@ namespace ProjetFinalTests
 
             //Assert
             Assert.AreEqual(2,data.Count());
-            Assert.AreEqual(typeof(List<MonsterTO>),actionResult.Model.GetType());
+            Assert.AreEqual(typeof(List<MonsterTO>),data.GetType());
         }
 
         [TestMethod]
@@ -49,6 +49,13 @@ namespace ProjetFinalTests
             //Assert
             Assert.AreEqual(typeof(MonsterTO), actionResult.Model.GetType());
             Assert.AreEqual(id, data.Id);
+        }
+
+        [TestMethod]
+        public void MarketController_NoAuthor_RaiseException()
+        {
+            //Arrange
+            Assert.ThrowsException<ArgumentNullException>(() => new MarketController(null));
         }
     }
 }

@@ -26,6 +26,12 @@ namespace LogicMetier
             if (testMarket.Any(x => !x.IsValid())) throw new Exception();
             return testMarket.Select(x => x.ToTO()).ToList();
         }
+        public List<MonsterTO> GetMonsterManual()
+        {
+            var testManual = monsterRepository.GetAll().Select(x => x.ToDomain());
+            if (testManual.Any(x => !x.IsValid())) throw new Exception();
+            return testManual.Select(x => x.ToTO()).ToList();
+        }
 
         public MonsterTO GetMonster(int id)
         {

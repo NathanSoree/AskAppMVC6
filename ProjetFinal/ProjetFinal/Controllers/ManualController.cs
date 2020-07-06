@@ -6,42 +6,33 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetFinal.Models;
 using Common.Enumerations;
+using LogicMetier;
+using Common.TransferObjects;
 
 namespace ProjetFinal.Controllers
 {
     public class ManualController : Controller
     {
+        private readonly AuthorUseCase author;
+
+        public ManualController(AuthorUseCase author)
+        {
+            this.author = author ?? throw new ArgumentNullException(nameof(author));
+        }
+
         // GET: MonsterController
         public ActionResult Index()
         {
-            var list = new List<MonsterViewModel>
-            {
-                new MonsterViewModel
-                {
-                    Id=1,
-                    Title="Strahd Von Zavorich",
-                    Name="Vampire",
-                    Size=Size.Medium,
-                    Kind=Kind.Undead
-                },
-                new MonsterViewModel
-                {
-                    Id=2,
-                    Title="Godzilla sans laser",
-                    Name="Tarrasque",
-                    Size=Size.Gargantuan,
-                    Kind=Kind.Monstrosities
-                }
-            };
-            return View(list);
+            var manual = author.GetMonsterManual();
+            return View(manual);
         }
 
         // GET: MonsterController/Details/5
         public ActionResult Details(int id)
         {
-            var monstre = new MonsterViewModel
+            var monstre = new MonsterTO
             {
-                Id = 54,
+                Id = id,
                 Title= "Bruce / Lou",
                 Name = "Hyena",
                 Size = Size.Small,
@@ -74,7 +65,7 @@ namespace ProjetFinal.Controllers
         // GET: MonsterController/Clone/5
         public ActionResult Clone(int id)
         {
-            var testClone = new MonsterViewModel
+            var testClone = new MonsterTO
             {
                 Id = 0,
                 Title = "Belgium's pride",
@@ -89,7 +80,7 @@ namespace ProjetFinal.Controllers
         // GET: MonsterController/Edit/5
         public ActionResult Edit(int id)
         {
-            var test = new MonsterViewModel
+            var test = new MonsterTO
             {
                 Id = id,
                 Title ="America's dream",
@@ -118,7 +109,7 @@ namespace ProjetFinal.Controllers
         // GET: MonsterController/Delete/5
         public ActionResult Delete(int id)
         {
-            var deleteTest = new MonsterViewModel
+            var deleteTest = new MonsterTO
             {
                 Id = 59687,
                 Title = "Baldur's gate 3",

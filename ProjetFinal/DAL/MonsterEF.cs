@@ -16,6 +16,8 @@ namespace DAL
 
         public bool IsValid()
         {
+            var idIsValid = Id > 0;
+            if (!idIsValid) throw new Exception("Id not valid");
             //TODO Compléter ça
             return true;
         }
