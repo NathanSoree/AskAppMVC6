@@ -8,6 +8,7 @@ using ProjetFinal.Models;
 using Common.Enumerations;
 using LogicMetier;
 using Common.TransferObjects;
+using Microsoft.VisualBasic;
 
 namespace ProjetFinal.Controllers
 {
@@ -54,7 +55,21 @@ namespace ProjetFinal.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    var monster = new MonsterTO     
+                    {
+                         Id     =0,
+                         Title  =collection["Title"],
+                         Author =collection["Author"],
+                         Name   =collection["Name"],
+                         Kind   =(Kind)Enum.Parse(typeof(Kind),collection["Kind"].ToString()),
+                         Size   =(Size)Enum.Parse(typeof(Size),collection["Size"].ToString())  
+                    };
+                    author.CreateMonster(monster);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
@@ -80,15 +95,15 @@ namespace ProjetFinal.Controllers
         // GET: MonsterController/Edit/5
         public ActionResult Edit(int id)
         {
-            var test = new MonsterTO
+            /*var test = new MonsterTO
             {
                 Id = id,
                 Title ="America's dream",
                 Name = "Black pudding",
                 Size = Size.Large,
                 Kind = Kind.Oozes
-            };
-            return View(test);
+            };*/
+            return View(/*test*/);
         }
 
         // POST: MonsterController/Edit/5
@@ -98,7 +113,21 @@ namespace ProjetFinal.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    var monster = new MonsterTO
+                    {
+                        Id = id,
+                        Title = collection["Title"],
+                        Author = collection["Author"],
+                        Name = collection["Name"],
+                        Kind = (Kind)Enum.Parse(typeof(Kind), collection["Kind"].ToString()),
+                        Size = (Size)Enum.Parse(typeof(Size), collection["Size"].ToString())
+                    };
+                    author.CreateMonster(monster);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {

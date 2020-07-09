@@ -36,6 +36,9 @@ namespace LogicMetier
             if (!testMarketDetails.IsValid()) throw new Exception();
             return testMarketDetails.ToTO();
         }
-
+        public bool CreateMonster(MonsterTO monsterTO)
+        {
+            return true;
+        }
     }
 }

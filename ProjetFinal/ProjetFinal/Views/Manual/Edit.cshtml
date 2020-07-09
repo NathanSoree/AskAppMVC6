@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -20,12 +20,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Kind" class="control-label"></label>
-                <input asp-for="Kind" class="form-control" />
+                <select asp-for="Kind" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Kind))"></select>
                 <span asp-validation-for="Kind" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" />
+                <select asp-for="Size" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Size))"></select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">

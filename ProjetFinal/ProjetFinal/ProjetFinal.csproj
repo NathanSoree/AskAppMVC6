@@ -13,4 +13,8 @@
     <ProjectReference Include="..\LogicMetier\LogicMetier.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\UIServices\" />
+  </ItemGroup>
+
 </Project>
