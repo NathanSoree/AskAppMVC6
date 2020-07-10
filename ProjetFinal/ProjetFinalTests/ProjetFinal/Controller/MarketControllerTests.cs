@@ -19,7 +19,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
         {
             //Arrange
             var mocqRepo = new Mock<IRepository<MonsterTO>>();
-            mocqRepo.Setup(x => x.GetAll()).Returns(new List<MonsterTO> { new MonsterTO { }, new MonsterTO { } });
+            mocqRepo.Setup(x => x.GetAll()).Returns(new List<MonsterTO> { testHelper.testMonster(1), testHelper.testMonster(2) });
             var author = new AuthorUseCase(mocqRepo.Object);
             var controller = new MarketController(author);
 
@@ -38,7 +38,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
             //Arrange
             var id = 5;
             var mocqRepo = new Mock<IRepository<MonsterTO>>();
-            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(new MonsterTO {Id=id});
+            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(testHelper.testMonster(id));
             var author = new AuthorUseCase(mocqRepo.Object);
             var controller = new MarketController(author);
 

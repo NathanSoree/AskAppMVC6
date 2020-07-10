@@ -66,7 +66,7 @@ namespace ProjetFinal.Controllers
                          Kind   =(Kind)Enum.Parse(typeof(Kind),collection["Kind"].ToString()),
                          Size   =(Size)Enum.Parse(typeof(Size),collection["Size"].ToString())  
                     };
-                    author.CreateMonster(monster);
+                    author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
                 }
                 return View();
@@ -79,31 +79,17 @@ namespace ProjetFinal.Controllers
 
         // GET: MonsterController/Clone/5
         public ActionResult Clone(int id)
-        {
-            var testClone = new MonsterTO
-            {
-                Id = 0,
-                Title = "Belgium's pride",
-                Name = "French fries",
-                Size = Size.Small,
-                Kind = Kind.Plants
-            };
-            testClone.Id = 67;
-            return RedirectToAction(nameof(Edit),new { id = testClone.Id });
+        {           
+            var newId = author.CloneMonster(id).Id;
+            return RedirectToAction(nameof(Edit),new { id = newId });
         }       
 
         // GET: MonsterController/Edit/5
         public ActionResult Edit(int id)
         {
-            /*var test = new MonsterTO
-            {
-                Id = id,
-                Title ="America's dream",
-                Name = "Black pudding",
-                Size = Size.Large,
-                Kind = Kind.Oozes
-            };*/
-            return View(/*test*/);
+            var monster = author.GetMonster(id);
+            
+            return View(monster);
         }
 
         // POST: MonsterController/Edit/5
@@ -124,7 +110,7 @@ namespace ProjetFinal.Controllers
                         Kind = (Kind)Enum.Parse(typeof(Kind), collection["Kind"].ToString()),
                         Size = (Size)Enum.Parse(typeof(Size), collection["Size"].ToString())
                     };
-                    author.CreateMonster(monster);
+                    author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
                 }
                 return View();

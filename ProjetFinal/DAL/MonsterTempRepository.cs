@@ -45,5 +45,12 @@ namespace DAL
             };
             return testMarket;
         }
+
+        public MonsterTO Upsert(MonsterTO item)
+        {
+            item.Id = item.Id == 0 ? 51 : item.Id;
+            return item;
+        }
+        
     }
 }

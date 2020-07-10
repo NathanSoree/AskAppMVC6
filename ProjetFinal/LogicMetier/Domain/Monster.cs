@@ -14,6 +14,7 @@ namespace LogicMetier.Domain
         public bool IsValid() 
         {
             //TODO Compléter ça
+            if (string.IsNullOrWhiteSpace(Author)) return false;
             return true;
         }
     }

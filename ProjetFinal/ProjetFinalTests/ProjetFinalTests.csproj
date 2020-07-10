@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LogicMetier\LogicMetier.csproj" />
     <ProjectReference Include="..\ProjetFinal\ProjetFinal.csproj" />
   </ItemGroup>
 

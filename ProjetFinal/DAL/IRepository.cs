@@ -7,5 +7,7 @@ namespace DAL
     {
         List<T> GetAll();
         T GetById(int id);
+        T Upsert(T item);
+       
     }
 }

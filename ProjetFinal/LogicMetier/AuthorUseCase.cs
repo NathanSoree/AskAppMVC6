@@ -1,4 +1,5 @@
 ﻿using Common.Enumerations;
+using Common.Exceptions;
 using Common.TransferObjects;
 using DAL;
 using LogicMetier.Domain;
@@ -12,6 +13,7 @@ namespace LogicMetier
 {
     public class AuthorUseCase
     {
+    
         private IRepository<MonsterTO> monsterRepository;
         public AuthorUseCase(IRepository<MonsterTO> monsterRepository)
         {
@@ -32,13 +34,45 @@ namespace LogicMetier
 
         public MonsterTO GetMonster(int id)
         {
-            var testMarketDetails = monsterRepository.GetById(id).ToDomain();
-            if (!testMarketDetails.IsValid()) throw new Exception();
-            return testMarketDetails.ToTO();
+            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id));
+            var testDetails = monsterRepository.GetById(id);
+            if (testDetails is null) throw new ArgumentException("There is no monster");
+            if (!testDetails.ToDomain().IsValid()) throw new MonsterNotValidException("The given monster isn't correct");
+            return testDetails.ToDomain().ToTO();
+
         }
-        public bool CreateMonster(MonsterTO monsterTO)
+
+        public MonsterTO CloneMonster(int id)
         {
-            return true;
+            var clonedMonster = GetMonster(id);
+            clonedMonster.Id = 0;
+            return CreateOrUpdateMonster(clonedMonster);
+        }
+
+        public MonsterTO CreateOrUpdateMonster(MonsterTO monsterTO)
+        {
+            try
+            {
+                if (monsterTO is null)
+                {
+                    throw new ArgumentNullException(nameof(monsterTO));
+                }
+                if (monsterTO.Id < 0) throw new ArgumentOutOfRangeException(nameof(monsterTO));
+                var monsterDomain = monsterTO.ToDomain();
+                if (!monsterDomain.IsValid()) throw new MonsterNotValidException("The given monster isn't correct");
+                return monsterRepository.Upsert(monsterTO).ToDomain().ToTO();
+            }
+            catch (MonsterNotValidException mne)
+            {
+                throw mne;
+                //TODO implement log
+            }
+            catch (AuthorNotExistingException ane)
+            {
+                throw ane;
+                //TODO implement log
+            }
+            
         }
     }
 }
