@@ -155,6 +155,20 @@ namespace ProjetFinalTests.LogicMetier
             Assert.AreNotEqual(id, result.Id);
         }
 
-        
+        [TestMethod]
+        public void DeleteMonster_Correct()
+        {
+            int id = 161;
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(new MonsterTO { Id = id });
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var monstre = testHelper.testMonster(id);
+
+            //Act
+            var result = author.CreateOrUpdateMonster(monstre);
+
+            //Assert
+            Assert.AreEqual(id, monstre.Id);
+        }
     }
 }

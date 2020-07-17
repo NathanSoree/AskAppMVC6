@@ -12,6 +12,7 @@ namespace Common.TransferObjects
         public string Author { get; set; }
         public string Name { get; set; }
         public Kind Kind { get; set; }
-        public Size Size { get; set; }        
+        public Size Size { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

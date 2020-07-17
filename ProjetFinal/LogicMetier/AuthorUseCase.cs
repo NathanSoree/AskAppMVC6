@@ -74,5 +74,12 @@ namespace LogicMetier
             }
             
         }
+
+        public MonsterTO DeleteMonster(MonsterTO monster)
+        {
+            monster.IsDeleted = true;
+            var deletedMonster = monsterRepository.Upsert(monster);
+            return deletedMonster;
+        }
     }
 }

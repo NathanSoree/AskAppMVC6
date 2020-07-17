@@ -13,6 +13,7 @@ namespace DAL
         public string Name { get; set; }
         public Kind Kind { get; set; }
         public Size Size { get; set; }
+        public bool IsDeleted { get; set; }
 
         public bool IsValid()
         {

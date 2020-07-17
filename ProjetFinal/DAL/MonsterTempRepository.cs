@@ -7,6 +7,20 @@ namespace DAL
 {
     public class MonsterTempRepository : IRepository<MonsterTO>
     {
+        public bool Delete(MonsterTO item)
+        {
+            if (item is null)
+            {
+                throw new ArgumentNullException("Ce monstre n'existe pas");
+            }
+            if (item.Id <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return true;
+        }
+
         public MonsterTO GetById(int id)
         {
             return new MonsterTO
