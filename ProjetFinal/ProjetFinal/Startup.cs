@@ -28,7 +28,7 @@ namespace ProjetFinal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<AuthorUseCase,AuthorUseCase>();
-            services.AddScoped<IRepository<MonsterTO>, MonsterTempRepository>();
+            services.AddScoped<IRepository<MonsterTO>, MonsterRepository>();
             services.AddControllersWithViews();
         }
 

@@ -1,6 +1,5 @@
 ﻿using Common.Interfaces;
 using Common.TransferObjects;
-using Common.Extension;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -10,9 +9,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Common.Extension
+namespace DAL
 {
-    class MonsterRepository : IRepository<MonsterTO>
+    public class MonsterRepository : IRepository<MonsterTO>
     {
         private MonsterMakerContext monsterMakerContext;
 
