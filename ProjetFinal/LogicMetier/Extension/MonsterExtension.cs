@@ -1,4 +1,5 @@
 ﻿using Common.TransferObjects;
+using DAL;
 using LogicMetier.Domain;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ namespace LogicMetier.Extension
 {
     public static class MonsterExtension
     {
-        public static Monster ToDomain (this MonsterTO monsterTO)
+        public static Monster ToDomain(this MonsterTO monsterTO)
         {
-            return new Monster 
+            return new Monster
             {
                 Id = monsterTO.Id,
                 Title = monsterTO.Title,
@@ -34,5 +35,6 @@ namespace LogicMetier.Extension
                 Size = monster.Size
             };
         }
+        
     }
 }

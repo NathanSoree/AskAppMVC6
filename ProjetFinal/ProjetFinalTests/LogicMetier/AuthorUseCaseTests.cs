@@ -7,6 +7,7 @@ using DAL;
 using Moq;
 using Common.TransferObjects;
 using Common.Exceptions;
+using Common.Interfaces;
 
 namespace ProjetFinalTests.LogicMetier
 {
@@ -29,6 +30,7 @@ namespace ProjetFinalTests.LogicMetier
 
             Assert.IsNotNull(result);
             Assert.AreEqual(id, result.Id);
+            mocqRepo.Verify(m => m.GetById(id), Times.Once());
             
         }
         [TestMethod()]
@@ -76,6 +78,7 @@ namespace ProjetFinalTests.LogicMetier
 
             //Assert
             Assert.IsNotNull(result);
+            mocqRepo.Verify(m => m.Upsert(monstre),Times.Once());
         }
 
         [TestMethod()]
@@ -91,7 +94,8 @@ namespace ProjetFinalTests.LogicMetier
             var result = author.CreateOrUpdateMonster(monstre);
 
             //Assert
-            Assert.AreEqual(id, monstre.Id);
+            Assert.AreEqual(id, result.Id);
+            mocqRepo.Verify((m => m.Upsert(monstre)), Times.Once());
         }
 
         [TestMethod]
@@ -160,7 +164,7 @@ namespace ProjetFinalTests.LogicMetier
         {
             int id = 161;
             var mocqRepo = new Mock<IRepository<MonsterTO>>();
-            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(new MonsterTO { Id = id });
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(testHelper.testMonster(id));
             var author = new AuthorUseCase(mocqRepo.Object);
             var monstre = testHelper.testMonster(id);
 
@@ -169,6 +173,7 @@ namespace ProjetFinalTests.LogicMetier
 
             //Assert
             Assert.AreEqual(id, monstre.Id);
+            mocqRepo.Verify((m => m.Upsert(monstre)), Times.Once());
         }
     }
 }

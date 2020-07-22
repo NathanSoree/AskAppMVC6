@@ -1,5 +1,6 @@
 ﻿using Common.TransferObjects;
 using Common.Enumerations;
+using Common.Interfaces;
 using System;
 using System.Collections.Generic;
 

@@ -1,0 +1,38 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DAL
+{
+    public class MonsterMakerContext : DbContext
+    {
+        public MonsterMakerContext()
+        {
+        }
+        public MonsterMakerContext(DbContextOptions<MonsterMakerContext> options)
+            : base(options)
+        {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (optionsBuilder is null)
+                throw new ArgumentNullException(nameof(optionsBuilder));
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite(@"Data Source=monsterMaker.db;");
+                optionsBuilder.EnableSensitiveDataLogging();
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            if (modelBuilder is null)
+                throw new ArgumentNullException(nameof(modelBuilder));
+        }
+
+        public DbSet<MonsterEF> Monsters { get; set; }
+    }
+}

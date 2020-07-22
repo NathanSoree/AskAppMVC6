@@ -1,6 +1,7 @@
 ﻿using Common.Enumerations;
 using Common.Exceptions;
 using Common.TransferObjects;
+using Common.Interfaces;
 using DAL;
 using LogicMetier.Domain;
 using LogicMetier.Extension;

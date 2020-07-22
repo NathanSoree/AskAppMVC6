@@ -8,6 +8,7 @@ using Moq;
 using ProjetFinal.Controllers;
 using System.Collections.Generic;
 using System;
+using Common.Interfaces;
 
 namespace ProjetFinalTests.ProjetFinalTests.Controller
 {

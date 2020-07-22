@@ -1,7 +1,7 @@
 ﻿using Common.TransferObjects;
 using System.Collections.Generic;
 
-namespace DAL
+namespace Common.Interfaces
 {
     public interface IRepository<T>
     {

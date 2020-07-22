@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL
 {
-    class MonsterEF
+    public class MonsterEF
     {
         public int Id { get; set; }
         public string Title { get; set; }
