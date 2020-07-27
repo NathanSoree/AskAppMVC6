@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common.Enumerations;
 using Common.Interfaces;
 using Common.TransferObjects;
 using DAL;
 using LogicMetier;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using ProjetFinal.Controllers;
 
 namespace ProjetFinalTests.ProjetFinalTests.Controller
@@ -118,8 +122,160 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
             var data = actionResult.Model as MonsterTO;
 
             Assert.AreEqual(id, data.Id);
+        }
 
+        [TestMethod]
+        public void EditPost_Correct()
+        {
+            int id = 126;
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(testHelper.testMonster(id));
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(new MonsterTO { Id = id });
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+            controller.ModelState.AddModelError("Kind", "Required");
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            { 
+                {"Id",new  StringValues(id.ToString())},
+                {"Title",new StringValues("Macjhinchsoe")},
+                {"Name", new StringValues("Carotte") },
+                {"Author", new StringValues("Régé") },
+                {"Kind", new StringValues(Kind.Aberrations.ToString()) },
+                {"Size", new StringValues(Size.Gargantuan.ToString()) }
+            });
 
+            var result = controller.Edit(id, newPost) as RedirectToActionResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual(id, result.RouteValues["id"]);
+            Assert.AreEqual("Edit", result.ActionName);
+        }
+
+        [TestMethod]
+        public void EditPost_throwsException_IdIsInvalid()
+        {
+            int id = 126;
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(testHelper.testMonster(id));
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Throws(new ArgumentException("MonsterNotValidException"));
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);            
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            {
+                {"Id",new  StringValues(id.ToString())},
+                {"Title",new StringValues("Macjhinchsoe")},
+                {"Name", new StringValues("Carotte") },
+                {"Author", new StringValues("Régé") },
+                {"Kind", new StringValues(Kind.Aberrations.ToString()) },
+                {"Size", new StringValues(Size.Gargantuan.ToString()) }
+            });
+
+            var result = controller.Edit(id, newPost) as RedirectToActionResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual(id, result.RouteValues["id"]);
+            Assert.AreEqual("Edit", result.ActionName);
+        }
+
+        [TestMethod]
+        public void EditPost_Correct_FormularCorrect()
+        {
+            int id = 183;
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(testHelper.testMonster(id));
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(new MonsterTO { Id = id });
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            {
+                {"Id",new  StringValues(id.ToString())},
+                {"Title",new StringValues("Macjhinchsoe")},
+                {"Name", new StringValues("Carotte") },
+                {"Author", new StringValues("Régé") },
+                {"Kind", new StringValues(Kind.Aberrations.ToString()) },
+                {"Size", new StringValues(Size.Gargantuan.ToString()) }
+            });
+
+            var result = controller.Edit(id, newPost) as RedirectToActionResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual("Index",result.ActionName);
+        }
+
+        [TestMethod]
+        public void CreatePost_Correct()
+        {
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(testHelper.testMonster(212));
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+            controller.ModelState.AddModelError("Kind", "Required");
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            {
+                {"Id",new  StringValues("0")},
+                {"Title",new StringValues("Kakarott")},
+                {"Name", new StringValues("Rir") },
+                {"Author", new StringValues("Enerv") },
+                {"Kind", new StringValues(Kind.Oozes.ToString()) },
+                {"Size", new StringValues(Size.Small.ToString()) }
+            });
+
+            var result = controller.Create(newPost) as RedirectToActionResult;
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual("Create", result.ActionName);
+        }
+
+        [TestMethod]
+        public void CreatePost_throwsException_IdIsInvalid()
+        {
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Throws(new ArgumentException("MonsterNotValidException"));
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+            controller.ModelState.AddModelError("Kind", "Required");
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            {
+                {"Id",new  StringValues("-242")},
+                {"Title",new StringValues("Kakarott")},
+                {"Name", new StringValues("Rir") },
+                {"Author", new StringValues("Enerv") },
+                {"Kind", new StringValues(Kind.Oozes.ToString()) },
+                {"Size", new StringValues(Size.Small.ToString()) }
+            });
+
+            var result = controller.Create(newPost) as RedirectToActionResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual("Create", result.ActionName);
+        }
+
+        [TestMethod]
+        public void CreatePost_Correct_FormularCorrect()
+        {
+            var mocqRepo = new Mock<IRepository<MonsterTO>>();
+            mocqRepo.Setup(x => x.Upsert(It.IsAny<MonsterTO>())).Returns(testHelper.testMonster(261));
+            var author = new AuthorUseCase(mocqRepo.Object);
+            var controller = new ManualController(author);
+            var newPost = new FormCollection(new Dictionary<string, StringValues>
+            {
+                {"Id",new  StringValues("261")},
+                {"Title",new StringValues("Macjhinchsoe")},
+                {"Name", new StringValues("Carotte") },
+                {"Author", new StringValues("Régé") },
+                {"Kind", new StringValues(Kind.Aberrations.ToString()) },
+                {"Size", new StringValues(Size.Gargantuan.ToString()) }
+            });
+
+            var result = controller.Create(newPost) as RedirectToActionResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            Assert.AreEqual("Index", result.ActionName);
         }
     }
 }

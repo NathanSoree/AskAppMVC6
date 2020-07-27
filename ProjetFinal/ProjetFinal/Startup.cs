@@ -6,9 +6,11 @@ using Common.Interfaces;
 using Common.TransferObjects;
 using DAL;
 using LogicMetier;
+using ProjetFinal.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,9 +29,11 @@ namespace ProjetFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<MonsterMakerContext>(w => w.UseSqlite(@"Data Source = C:\Users\Home\Documents\GitHub\AskAppMVC6\ProjetFinal\DAL\monsterMaker.db"));
             services.AddScoped<AuthorUseCase,AuthorUseCase>();
             services.AddScoped<IRepository<MonsterTO>, MonsterRepository>();
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +60,8 @@ namespace ProjetFinal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Manual}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }

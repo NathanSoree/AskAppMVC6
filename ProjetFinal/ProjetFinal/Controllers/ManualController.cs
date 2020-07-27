@@ -69,11 +69,11 @@ namespace ProjetFinal.Controllers
                     author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
                 }
-                return View();
+                return RedirectToAction("Create");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Create");
             }
         }
 
@@ -113,11 +113,11 @@ namespace ProjetFinal.Controllers
                     author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
                 }
-                return View();
+                return RedirectToAction("Edit",new { id = id } );
             }
             catch
             {
-                return View();
+                return RedirectToAction("Edit", new { id = id });
             }
         }
 

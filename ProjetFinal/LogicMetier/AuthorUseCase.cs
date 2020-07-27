@@ -73,6 +73,10 @@ namespace LogicMetier
                 throw ane;
                 //TODO implement log
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             
         }
 
