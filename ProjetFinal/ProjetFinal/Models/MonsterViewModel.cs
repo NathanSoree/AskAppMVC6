@@ -12,7 +12,7 @@ namespace ProjetFinal.Models
         public string Title { get; set; }
         public string Author{ get; set; }
         public string Name { get; set; }
-        public Kind Kind { get; set; }
+        public Common.Enumerations.Kind Kind { get; set; }
         public Size Size { get; set; }
     }
 }

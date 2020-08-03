@@ -14,9 +14,11 @@ namespace DAL
                 Id = monsterTO.Id,
                 Title = monsterTO.Title,
                 Author = monsterTO.Author,
+                IsWide = monsterTO.IsWide,
                 Name = monsterTO.Name,
                 Kind = monsterTO.Kind,
-                Size = monsterTO.Size
+                Size = monsterTO.Size,
+                IsDeleted = monsterTO.IsDeleted
             };
         }
 
@@ -27,9 +29,11 @@ namespace DAL
                 Id = monster.Id,
                 Title = monster.Title,
                 Author = monster.Author,
+                IsWide = monster.IsWide,
                 Name = monster.Name,
                 Kind = monster.Kind,
-                Size = monster.Size
+                Size = monster.Size,
+                IsDeleted = monster.IsDeleted
             };
         }
         public static MonsterEF ToTrackedEF(this MonsterTO monster, MonsterEF monsterToModify)
@@ -42,9 +46,11 @@ namespace DAL
             monsterToModify.Id = monster.Id;
             monsterToModify.Title = monster.Title;
             monsterToModify.Author = monster.Author;
+            monsterToModify.IsWide = monster.IsWide;
             monsterToModify.Name = monster.Name;
             monsterToModify.Kind = monster.Kind;
             monsterToModify.Size = monster.Size;
+            monsterToModify.IsDeleted = monster.IsDeleted;
 
             return monsterToModify;
         }

@@ -17,9 +17,11 @@ namespace LogicMetier.Extension
                 Id = monsterTO.Id,
                 Title = monsterTO.Title,
                 Author = monsterTO.Author,
+                IsWide = monsterTO.IsWide,
                 Name = monsterTO.Name,
-                Kind = monsterTO.Kind,
-                Size = monsterTO.Size
+                Type = monsterTO.Type,
+                Size = monsterTO.Size,
+                IsDeleted = monsterTO.IsDeleted
             };
         }
 
@@ -30,9 +32,11 @@ namespace LogicMetier.Extension
                 Id = monster.Id,
                 Title = monster.Title,
                 Author = monster.Author,
+                IsWide = monster.IsWide,
                 Name = monster.Name,
-                Kind = monster.Kind,
-                Size = monster.Size
+                Type = monster.Type,
+                Size = monster.Size,
+                IsDeleted = monster.IsDeleted
             };
         }
         

@@ -18,6 +18,7 @@ namespace Common.Enumerations
         Psychic,
         Radiant,
         Slashing,
-        Thunder
+        Thunder,
+        Other
     }
 }

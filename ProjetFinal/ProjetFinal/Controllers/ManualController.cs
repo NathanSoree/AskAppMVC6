@@ -37,7 +37,7 @@ namespace ProjetFinal.Controllers
                 Title= "Bruce / Lou",
                 Name = "Hyena",
                 Size = Size.Small,
-                Kind = Kind.Beasts
+                Kind = Common.Enumerations.Kind.Beasts
             };
             return View(monstre);
         }
@@ -57,14 +57,14 @@ namespace ProjetFinal.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var monster = new MonsterTO     
+                    var monster = new MonsterTO
                     {
                          Id     =0,
-                         Title  =collection["Title"],
-                         Author =collection["Author"],
-                         Name   =collection["Name"],
-                         Kind   =(Kind)Enum.Parse(typeof(Kind),collection["Kind"].ToString()),
-                         Size   =(Size)Enum.Parse(typeof(Size),collection["Size"].ToString())  
+                         Title  = collection["Title"],
+                         Author = collection["Author"],
+                         Name   = collection["Name"],
+                         Kind   =(Common.Enumerations.Kind)Enum.Parse(typeof(Common.Enumerations.Kind), collection["Kind"].ToString()),
+                         Size   =(Size)Enum.Parse(typeof(Size), collection["Size"].ToString())  
                     };
                     author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
@@ -107,7 +107,7 @@ namespace ProjetFinal.Controllers
                         Title = collection["Title"],
                         Author = collection["Author"],
                         Name = collection["Name"],
-                        Kind = (Kind)Enum.Parse(typeof(Kind), collection["Kind"].ToString()),
+                        Kind = (Common.Enumerations.Kind)Enum.Parse(typeof(Common.Enumerations.Kind), collection["Kind"].ToString()),
                         Size = (Size)Enum.Parse(typeof(Size), collection["Size"].ToString())
                     };
                     author.CreateOrUpdateMonster(monster);
@@ -130,7 +130,7 @@ namespace ProjetFinal.Controllers
                 Title = "Baldur's gate 3",
                 Name = "Mindflayer",
                 Size = Size.Medium,
-                Kind = Kind.Aberrations
+                Kind = Common.Enumerations.Kind.Aberrations
             };
             return View(deleteTest);
         }

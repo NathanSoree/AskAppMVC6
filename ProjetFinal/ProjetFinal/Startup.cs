@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using LogicMetier.Domain;
 
 namespace ProjetFinal
 {
@@ -62,6 +63,7 @@ namespace ProjetFinal
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapHub<MonsterHub>("/monsterHub");
             });
         }
     }
