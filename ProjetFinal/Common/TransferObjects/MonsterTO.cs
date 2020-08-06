@@ -12,7 +12,7 @@ namespace Common.TransferObjects
         public string Author { get; set; }
         public bool IsWide { get; set; }
         public string Name { get; set; }
-        public Kind Type { get; set; }
+        public Enumerations.Type Type { get; set; }
         public Size Size { get; set; }
         public Alignment Alignment { get; set; }
         public int ArmorClass { get; set; }
@@ -22,8 +22,11 @@ namespace Common.TransferObjects
         public List<Stat> Saving { get; set; }
         public Dictionary<Skill, Proficiency> Skills { get; set; }
         public List<DamageType> Vulnerabilities { get; set; }
+        public string OtherVulnerabilities { get; set; }
         public List<DamageType> Resistances { get; set; }
+        public string OtherResistences { get; set; }
         public List<DamageType> Immunities { get; set; }
+        public string OtherImmunities { get; set; }
         public List<Condition> ConditionImmunities { get; set; }
         public Dictionary<Sense, int> Senses { get; set; }
         public List<string> Languages { get; set; }

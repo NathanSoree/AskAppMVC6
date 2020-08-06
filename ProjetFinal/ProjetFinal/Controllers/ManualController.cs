@@ -37,7 +37,7 @@ namespace ProjetFinal.Controllers
                 Title= "Bruce / Lou",
                 Name = "Hyena",
                 Size = Size.Small,
-                Kind = Common.Enumerations.Kind.Beasts
+                Type = Common.Enumerations.Type.Beasts
             };
             return View(monstre);
         }
@@ -63,7 +63,7 @@ namespace ProjetFinal.Controllers
                          Title  = collection["Title"],
                          Author = collection["Author"],
                          Name   = collection["Name"],
-                         Kind   =(Common.Enumerations.Kind)Enum.Parse(typeof(Common.Enumerations.Kind), collection["Kind"].ToString()),
+                         Type   =(Common.Enumerations.Type)Enum.Parse(typeof(Common.Enumerations.Type), collection["Kind"].ToString()),
                          Size   =(Size)Enum.Parse(typeof(Size), collection["Size"].ToString())  
                     };
                     author.CreateOrUpdateMonster(monster);
@@ -107,7 +107,7 @@ namespace ProjetFinal.Controllers
                         Title = collection["Title"],
                         Author = collection["Author"],
                         Name = collection["Name"],
-                        Kind = (Common.Enumerations.Kind)Enum.Parse(typeof(Common.Enumerations.Kind), collection["Kind"].ToString()),
+                        Type = (Common.Enumerations.Type)Enum.Parse(typeof(Common.Enumerations.Type), collection["Kind"].ToString()),
                         Size = (Size)Enum.Parse(typeof(Size), collection["Size"].ToString())
                     };
                     author.CreateOrUpdateMonster(monster);
@@ -130,7 +130,7 @@ namespace ProjetFinal.Controllers
                 Title = "Baldur's gate 3",
                 Name = "Mindflayer",
                 Size = Size.Medium,
-                Kind = Common.Enumerations.Kind.Aberrations
+                Type = Common.Enumerations.Type.Aberrations
             };
             return View(deleteTest);
         }

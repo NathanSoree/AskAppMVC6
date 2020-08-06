@@ -30,7 +30,7 @@ namespace ProjetFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MonsterMakerContext>(w => w.UseSqlite(@"Data Source = C:\Users\Home\Documents\GitHub\AskAppMVC6\ProjetFinal\DAL\monsterMaker.db"));
+            services.AddDbContext<MonsterMakerContext>();
             services.AddScoped<AuthorUseCase,AuthorUseCase>();
             services.AddScoped<IRepository<MonsterTO>, MonsterRepository>();
             services.AddControllersWithViews();

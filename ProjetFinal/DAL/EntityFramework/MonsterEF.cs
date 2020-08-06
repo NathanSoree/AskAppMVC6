@@ -12,21 +12,23 @@ namespace DAL.EntityFramework
         public string Author { get; set; }
         public bool IsWide { get; set; }
         public string Name { get; set; }
-        public Kind Type { get; set; }
+        public Common.Enumerations.Type Type { get; set; }
         public Size Size { get; set; }
         public Alignment Alignment { get; set; }
         public int ArmorClass { get; set; }
         public HealthEF Health { get; set; }
-        public Dictionary<Speed, int> Speeds { get; set; }
-        public Dictionary<Stat, int> Stats { get; set; }
-        public List<Stat> Saving { get; set; }
-        public Dictionary<Skill, Proficiency> Skills { get; set; }
-        public List<DamageType> Vulnerabilities { get; set; }
-        public List<DamageType> Resistances { get; set; }
-        public List<DamageType> Immunities { get; set; }
-        public List<Condition> ConditionImmunities { get; set; }
-        public Dictionary<Sense, int> Senses { get; set; }
-        public List<string> Languages { get; set; }
+        public virtual List<MonsterSpeedEF> Speeds { get; set; }
+        public virtual List<MonsterStatsEF> Stats { get; set; }
+        public virtual List<MonsterSkillEF> Skills { get; set; }
+        public virtual List<MonsterVulnerabilitiesEF> Vulnerabilities { get; set; }
+        public string OtherVulnerabilities { get; set; }
+        public virtual List<MonsterResistanceEF> Resistances { get; set; }
+        public string OtherResistences { get; set; }
+        public virtual List<MonsterImmunitiesEF> Immunities { get; set; }
+        public string OtherImmunities { get; set; }
+        public virtual List<MonsterCondImmuEF> ConditionImmunities { get; set; }
+        public virtual List<MonsterSenseEF> Senses { get; set; }
+        public virtual List<MonsterLanguageEF> Languages { get; set; }
         public DifficultyRating DifficultyRating { get; set; }
         public List<TraitsEF> Traits { get; set; }
         public List<ActionEF> Actions { get; set; }

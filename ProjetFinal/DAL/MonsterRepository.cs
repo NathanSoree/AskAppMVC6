@@ -1,9 +1,10 @@
 ﻿using Common.Interfaces;
 using Common.TransferObjects;
 using DAL;
+using DAL.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects.DataClasses;
+//using System.Data.Entity.Core.Objects.DataClasses;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -46,8 +47,8 @@ namespace DAL
         public List<MonsterTO> GetAll()
         {
             var list = monsterMakerContext.Monsters.AsEnumerable()
-                .Where(x => x.IsDeleted = false)
-                ?.Select(x => x.ToTO()).ToList();
+                .Where(x => x.IsDeleted = false)?
+                .Select(x => x.ToTO()).ToList();
             if (list is null)
             {
                 throw new ArgumentNullException("There is no monster in the Database");

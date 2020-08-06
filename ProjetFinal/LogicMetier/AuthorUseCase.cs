@@ -30,7 +30,8 @@ namespace LogicMetier
         {
             var testManual = monsterRepository.GetAll().Select(x => x.ToDomain());
             if (testManual.Any(x => !x.IsValid())) throw new Exception();
-            return testManual.Select(x => x.ToTO()).ToList();
+            var checkList = testManual.Select(x => x.ToTO()).ToList();
+            return checkList;
         }
 
         public MonsterTO GetMonster(int id)

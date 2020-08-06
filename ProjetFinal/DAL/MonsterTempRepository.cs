@@ -31,7 +31,7 @@ namespace DAL
                 Author = "Régénaer",
                 Name = "Manny, demoted commander",
                 Size = Size.Small,
-                Kind = Common.Enumerations.Kind.Humanoids
+                Type = Common.Enumerations.Type.Humanoids
             };
         }
 
@@ -46,7 +46,7 @@ namespace DAL
                     Author="Fée Lectricité",
                     Name="Pixie",
                     Size=Size.Tiny,
-                    Kind= Common.Enumerations.Kind.Fey
+                    Type= Common.Enumerations.Type.Fey
                 },
                 new MonsterTO
                 {
@@ -55,7 +55,7 @@ namespace DAL
                     Author="Régénaer",
                     Name="Manny, demoted commander",
                     Size=Size.Small,
-                    Kind= Common.Enumerations.Kind.Humanoids
+                    Type= Common.Enumerations.Type.Humanoids
                 }
             };
             return testMarket;

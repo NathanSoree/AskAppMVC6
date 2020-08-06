@@ -140,7 +140,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Macjhinchsoe")},
                 {"Name", new StringValues("Carotte") },
                 {"Author", new StringValues("Régé") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Aberrations.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Aberrations.ToString()) },
                 {"Size", new StringValues(Size.Gargantuan.ToString()) }
             });
 
@@ -167,7 +167,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Macjhinchsoe")},
                 {"Name", new StringValues("Carotte") },
                 {"Author", new StringValues("Régé") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Aberrations.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Aberrations.ToString()) },
                 {"Size", new StringValues(Size.Gargantuan.ToString()) }
             });
 
@@ -194,7 +194,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Macjhinchsoe")},
                 {"Name", new StringValues("Carotte") },
                 {"Author", new StringValues("Régé") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Aberrations.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Aberrations.ToString()) },
                 {"Size", new StringValues(Size.Gargantuan.ToString()) }
             });
 
@@ -219,7 +219,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Kakarott")},
                 {"Name", new StringValues("Rir") },
                 {"Author", new StringValues("Enerv") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Oozes.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Oozes.ToString()) },
                 {"Size", new StringValues(Size.Small.ToString()) }
             });
 
@@ -243,7 +243,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Kakarott")},
                 {"Name", new StringValues("Rir") },
                 {"Author", new StringValues("Enerv") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Oozes.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Oozes.ToString()) },
                 {"Size", new StringValues(Size.Small.ToString()) }
             });
 
@@ -267,7 +267,7 @@ namespace ProjetFinalTests.ProjetFinalTests.Controller
                 {"Title",new StringValues("Macjhinchsoe")},
                 {"Name", new StringValues("Carotte") },
                 {"Author", new StringValues("Régé") },
-                {"Kind", new StringValues(Common.Enumerations.Kind.Aberrations.ToString()) },
+                {"Kind", new StringValues(Common.Enumerations.Type.Aberrations.ToString()) },
                 {"Size", new StringValues(Size.Gargantuan.ToString()) }
             });
 

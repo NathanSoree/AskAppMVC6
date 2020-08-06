@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common.Enumerations
 {
-    public enum Kind
+    public enum Type
     {
         Aberrations=0,
         Beasts=1,

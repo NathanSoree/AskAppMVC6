@@ -18,6 +18,15 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
+document.getElementById("Title").addEventListener("input", function (event) {
+    var name = document.getElementById("Title").value;
+    //var message = document.getElementById("messageInput").value;
+    connection.invoke("UpdateSheet", name).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
 document.getElementById("Name").addEventListener("input", function (event) {
     var name = document.getElementById("Name").value;
     //var message = document.getElementById("messageInput").value;
