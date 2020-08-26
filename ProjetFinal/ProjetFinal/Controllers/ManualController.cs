@@ -33,11 +33,11 @@ namespace ProjetFinal.Controllers
         {
             var monstre = new MonsterTO
             {
-                Id = id,
-                Title= "Bruce / Lou",
-                Name = "Hyena",
-                Size = Size.Small,
-                Type = Common.Enumerations.Type.Beasts
+                Id          = id,
+                Title       = "Bruce / Lou",
+                Name        = "Hyena",
+                Size        = Size.Small,
+                Type        = Common.Enumerations.Type.Beasts
             };
             return View(monstre);
         }
@@ -59,12 +59,14 @@ namespace ProjetFinal.Controllers
                 {
                     var monster = new MonsterTO
                     {
-                         Id     =0,
-                         Title  = collection["Title"],
-                         Author = collection["Author"],
-                         Name   = collection["Name"],
-                         Type   =(Common.Enumerations.Type)Enum.Parse(typeof(Common.Enumerations.Type), collection["Kind"].ToString()),
-                         Size   =(Size)Enum.Parse(typeof(Size), collection["Size"].ToString())  
+                         Id         =0,
+                         Title      = collection["Title"],
+                         Author     = collection["Author"],
+                         Name       = collection["Name"],
+                         Type       =(Common.Enumerations.Type)Enum.Parse(typeof(Common.Enumerations.Type), collection["Kind"].ToString()),
+                         Size       =(Size)Enum.Parse(typeof(Size), collection["Size"].ToString()),
+                         Alignment  =(Alignment)Enum.Parse(typeof(Alignment), collection["Alignement"].ToString()),
+                         //ArmorClass = collection["ArmorClass"]
                     };
                     author.CreateOrUpdateMonster(monster);
                     return RedirectToAction(nameof(Index));
@@ -126,11 +128,11 @@ namespace ProjetFinal.Controllers
         {
             var deleteTest = new MonsterTO
             {
-                Id = 59687,
-                Title = "Baldur's gate 3",
-                Name = "Mindflayer",
-                Size = Size.Medium,
-                Type = Common.Enumerations.Type.Aberrations
+                Id          = 59687,
+                Title       = "Baldur's gate 3",
+                Name        = "Mindflayer",
+                Size        = Size.Medium,
+                Type        = Common.Enumerations.Type.Aberrations
             };
             return View(deleteTest);
         }

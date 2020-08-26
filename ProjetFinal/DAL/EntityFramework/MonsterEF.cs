@@ -10,6 +10,9 @@ namespace DAL.EntityFramework
         public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
+        public string Description { get; set; }
+        public string LairAction { get; set; }
+        public string RegEffects { get; set; }
         public bool IsWide { get; set; }
         public string Name { get; set; }
         public Common.Enumerations.Type Type { get; set; }

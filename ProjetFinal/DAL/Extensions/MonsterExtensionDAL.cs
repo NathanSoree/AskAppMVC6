@@ -17,6 +17,9 @@ namespace DAL.Extensions
                 Id = monsterTO.Id,
                 Title = monsterTO.Title,
                 Author = monsterTO.Author,
+                Description = monsterTO.Description,
+                LairAction = monsterTO.LairAction,
+                RegEffects = monsterTO.RegEffects,
                 IsWide = monsterTO.IsWide,
                 Name = monsterTO.Name,
                 Type = monsterTO.Type,
@@ -25,7 +28,7 @@ namespace DAL.Extensions
                 ArmorClass = monsterTO.ArmorClass,
                 Health = monsterTO.Health?.ToEF(),
                 Speeds = monsterTO.Speeds?.ToEF(monsterTO.Id),
-                Stats = monsterTO.ToEFStat(), // TODO after break: Commenté tous les dictionnaires... JK, faire pareil pour tous les dico
+                Stats = monsterTO.ToEFStat(),
                 Skills = monsterTO.ToEFSkill(monsterTO.Id),
                 Vulnerabilities = monsterTO.ToEFVuln(monsterTO.Id),
                 OtherVulnerabilities = monsterTO.OtherVulnerabilities,
@@ -53,6 +56,9 @@ namespace DAL.Extensions
                 Id = monster.Id,
                 Title = monster.Title,
                 Author = monster.Author,
+                Description = monster.Description,
+                LairAction = monster.LairAction,
+                RegEffects = monster.RegEffects,
                 IsWide = monster.IsWide,
                 Name = monster.Name,
                 Type = monster.Type,
@@ -92,6 +98,9 @@ namespace DAL.Extensions
              monsterToModify.Id = monster.Id;
              monsterToModify.Title = monster.Title;
              monsterToModify.Author = monster.Author;
+            monsterToModify.Description = monster.Description;
+            monsterToModify.LairAction = monster.LairAction;
+            monsterToModify.RegEffects = monster.RegEffects;
              monsterToModify.IsWide = monster.IsWide;
              monsterToModify.Name = monster.Name;
              monsterToModify.Type = monster.Type;
