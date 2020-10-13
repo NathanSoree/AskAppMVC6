@@ -11,95 +11,95 @@
 
 <div class="row" >
     <div class="col-3">
-        <div class="overflow-auto" style="height:70%;">
+        <div class="overflow-auto sticky-top" style="height:70%;">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="IsWide" class="control-label"></label>
-                    <input asp-for="IsWide" class="form-control" />
-                    <span asp-validation-for="IsWide" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="LairAction" class="control-label"></label>
-                    <input asp-for="LairAction" class="form-control" />
-                    <span asp-validation-for="LairAction" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="RegEffects" class="control-label"></label>
-                    <input asp-for="RegEffects" class="form-control" />
-                    <span asp-validation-for="RegEffects" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Type" class="control-label"></label>
-                    <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Type))"></select>
-                    <span asp-validation-for="Type" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Size" class="control-label"></label>
-                    <select asp-for="Size" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Size))"></select>
-                    <span asp-validation-for="Size" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Alignment" class="control-label"></label>
-                    <select asp-for="Alignment" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Alignment))"></select>
-                    <span asp-validation-for="Alignment" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ArmorClass" class="control-label"></label>
-                    <input asp-for="ArmorClass" class="form-control" />
-                    <span asp-validation-for="ArmorClass" class="text-danger"></span>
-                </div>
-                @{//Health
-                    //Speeds
-                    //Stats
-                    //Savings
-                    //Skills
-                    //Vulnerabilities
-                    //Resistance
-                    //Immunities
-                    //ConditionImmunities
-                    //Senses
-                    //Languages
-                }
-                <div class="form-group">
-                    <label asp-for="Languages" class="control-label"></label>
-                    <input asp-for="Languages" class="form-control" />
-                    <span asp-validation-for="Languages" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DifficultyRating" class="control-label"></label>
-                    <select asp-for="DifficultyRating" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.DifficultyRating))"></select>
-                    <span asp-validation-for="DifficultyRating" class="text-danger"></span>
-                </div>
-                @{//Traits
-                    //Actions
-                }
-                <div class="form-group">
-                    <label asp-for="NbrLegendaryActionPerTurn" class="control-label"></label>
-                    <input asp-for="NbrLegendaryActionPerTurn" class="form-control" />
-                    <span asp-validation-for="NbrLegendaryActionPerTurn" class="text-danger"></span>
-                </div>
-                @{//LegendaryActions
-                    //Reactions
-                }
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsWide" class="control-label"></label>
+                        <input asp-for="IsWide" class="form-control" />
+                        <span asp-validation-for="IsWide" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LairAction" class="control-label"></label>
+                        <input asp-for="LairAction" class="form-control" />
+                        <span asp-validation-for="LairAction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RegEffects" class="control-label"></label>
+                        <input asp-for="RegEffects" class="form-control" />
+                        <span asp-validation-for="RegEffects" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Type" class="control-label"></label>
+                        <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Type))"></select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Size" class="control-label"></label>
+                        <select asp-for="Size" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Size))"></select>
+                        <span asp-validation-for="Size" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Alignment" class="control-label"></label>
+                        <select asp-for="Alignment" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.Alignment))"></select>
+                        <span asp-validation-for="Alignment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ArmorClass" class="control-label"></label>
+                        <input asp-for="ArmorClass" class="form-control" />
+                        <span asp-validation-for="ArmorClass" class="text-danger"></span>
+                    </div>
+                    @{//Health
+                        //Speeds
+                        //Stats
+                        //Savings
+                        //Skills
+                        //Vulnerabilities
+                        //Resistance
+                        //Immunities
+                        //ConditionImmunities
+                        //Senses
+                        //Languages
+                    }
+                    <div class="form-group">
+                        <label asp-for="Languages" class="control-label"></label>
+                        <input asp-for="Languages" class="form-control" />
+                        <span asp-validation-for="Languages" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DifficultyRating" class="control-label"></label>
+                        <select asp-for="DifficultyRating" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Common.Enumerations.DifficultyRating))"></select>
+                        <span asp-validation-for="DifficultyRating" class="text-danger"></span>
+                    </div>
+                    @{//Traits
+                        //Actions
+                    }
+                    <div class="form-group">
+                        <label asp-for="NbrLegendaryActionPerTurn" class="control-label"></label>
+                        <input asp-for="NbrLegendaryActionPerTurn" class="form-control" />
+                        <span asp-validation-for="NbrLegendaryActionPerTurn" class="text-danger"></span>
+                    </div>
+                    @{//LegendaryActions
+                        //Reactions
+                    }
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                   </div>
             </form>
         </div>    
     </div>
